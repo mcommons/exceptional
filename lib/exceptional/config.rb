@@ -47,7 +47,7 @@ module Exceptional
       end
 
       def application_environment
-        ENV['RACK_ENV'] || ENV['RAILS_ENV']|| 'development'
+        defined?(RAILS_ENV) ? RAILS_ENV : (ENV['RACK_ENV'] || 'development')
       end
 
       def should_send_to_api?
